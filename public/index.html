@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Web App</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="utils.js" defer></script>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Recipe</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li>
+                    <form id="search-form">
+                        <input type="search" id="search-input" placeholder="Search recipe...">
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <!-- Recipe details will be displayed here -->
+        <div id="recipe-container" class="col"></div>
+        <div class="col">
+            <h2>Add New Recipe</h2>
+            <label for="name-text">Name:</label>
+            <input type="text" id="name-text">
+
+            <h4>Ingredients</h4>
+            <textarea id="ingredients-text"></textarea>
+            <button id="add-ingredient" type="button" class="btn">Add ingredient</button>
+
+            <h4>Instructions</h4>
+            <textarea id="instructions-text"></textarea>
+            <button id="add-instruction" type="button" class="btn">Add instruction</button>
+
+            <h4>Special Diet</h4>
+            <div id="categories-container">
+                <!--Display category details here-->
+            </div>
+
+            <!--Add multiple images-->
+            <form action="/images" method="post" enctype="multipart/form-data">
+                <label for="image-input">Choose images to upload (PNG, JPG)</label>
+                <input type="file" id="image-input" name="image-input" accept=".jpg, .jpeg, .png" multiple />
+            </form>
+
+            <button id="submit" type="button" class="btn">Submit</button>
+            <div id="images">
+                <!--Image Display here-->
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
