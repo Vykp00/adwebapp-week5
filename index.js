@@ -12,16 +12,24 @@ const Image = require('./models/image');
 
 // Setting up mongoose connection
 const mongoose = require("mongoose");
-const { error } = require('console');
-const { AsyncResource } = require('async_hooks');
 mongoose.set("strictQuery", false);
 // Add db url for CodeGrade
 const mongoDB = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/testdb";;
 
+mongoose.connect(mongoDB);
+console.log(mongoose.connection.readyState);
+console.log("CONNECT");
+mongoose.Promise = Promise;
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "MongoDB connection error"));
+
+// Old moongoose connection
+/*
 main().catch((err) => console.log(err));
 async function main() {
     await mongoose.connect(mongoDB);
 }
+*/
 
 // Specify host instead of localhost
 const port = 3000;
