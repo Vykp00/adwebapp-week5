@@ -1,9 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const mongoose = require("mongoose");
 const multer  = require('multer')
 const path = require('path');
 require('dotenv').config();
+
+// Specify host instead of localhost
+const port = 3000;
+const host = '127.0.0.1';
 
 // Connect to MongoDB Schema models
 const Recipe = require('./models/recipe');
@@ -11,10 +16,10 @@ const Category = require('./models/category');
 const Image = require('./models/image');
 
 // Setting up mongoose connection
-const mongoose = require("mongoose");
-mongoose.set("strictQuery", false);
+
+//mongoose.set("strictQuery", false);
 // Add db url for CodeGrade
-const mongoDB = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/testdb";;
+const mongoDB = "mongodb://127.0.0.1:27017/testdb";;
 
 mongoose.connect(mongoDB);
 console.log(mongoose.connection.readyState);
@@ -31,9 +36,6 @@ async function main() {
 }
 */
 
-// Specify host instead of localhost
-const port = 3000;
-const host = '127.0.0.1';
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
