@@ -23,7 +23,9 @@ async function main() {
     await mongoose.connect(mongoDB);
 }
 
+// Specify host instead of localhost
 const port = 3000;
+const host = '127.0.0.1';
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -143,6 +145,6 @@ app.get('/images/:imageId', async (req, res) => {
     }
 });
 // Start the server
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+app.listen(port, host, () => {
+    console.log(`Server is running on http://${host}:${port}`);
 });
